@@ -1,4 +1,3 @@
-import * as React from "react";
 import TurkeyMap from "turkey-map-react";
 
 export default function Root() {
@@ -14,17 +13,7 @@ export default function Root() {
         cityWrapper={(component, city) => {
           if (city.plateNumber === 7) {
             return React.cloneElement(component, {
-              children: React.Children.map(
-                component.props.children,
-                (child) => {
-                  if (child.type === "path") {
-                    return React.cloneElement(child, {
-                      fill: "red!important",
-                    });
-                  }
-                  return child;
-                }
-              ),
+              style: { fill: "red" }, // override the fill color
             });
           }
           return component;
